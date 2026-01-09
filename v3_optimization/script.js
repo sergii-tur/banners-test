@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   // ================= CONFIG =================
   const CONFIG = {
-      particleCount: 85,
+      particleCount: 120,
 
       speed: {
           min: 2,
