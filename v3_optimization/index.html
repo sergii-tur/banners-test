@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FxPro</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="ad.size" content="width=336,height=280">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+
+  <link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'>
+  
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    /* to prevent Firefox FOUC, this must be here */
+    let FF_FOUC_FIX;
+  </script>
+</head>
+
+<body>
+  <div id="wrapper" class="flex flex-column absolute">
+    
+    <canvas id="canvas" class="absolute"></canvas>
+
+    <div class="top-content">
+      <div class="row-logo flex">
+        <div id="logo"></div>
+      </div>
+
+      <div class="row-txt-and-btn flex flex-column hidden appear">
+        <div class="main-text">
+          <span>The World's</span><br>
+          <span>#1 Broker!</span>
+        </div>
+        <div class="sub-text">
+          <span>Join millions trading</span><br>
+          <span>at FxPro</span>
+        </div>
+      </div>
+    </div>
+      
+    <div class="row-rw flex-center">
+      <span class="semi-bold">Trade responsibly:</span>&nbsp;
+      <span>capital is at risk.</span>
+    </div>
+  </div><!-- /wrapper -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
