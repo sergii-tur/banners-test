@@ -121,6 +121,7 @@ b {
   height: 100%;
   width: 100%;
   pointer-events: none;
+  filter: blur(1px);
   z-index: 1;
 }
 

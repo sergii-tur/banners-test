@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
           r: 255,
           g: 30,
           b: 30,
-          alpha: 0.9,
-          glow: 12
+          alpha: 1
       },
 
       innerLine: {
@@ -53,12 +52,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const TWO_PI = Math.PI * 2;
   const TAIL_MULTIPLIER = CONFIG.particle.tailLength * 0.08;
   
-  let mainStrokeStyle, innerStrokeStyle, shadowColor, voidGradient;
+  let mainStrokeStyle, innerStrokeStyle, voidGradient;
   
   function updateCachedValues() {
     mainStrokeStyle = `rgba(${CONFIG.color.r},${CONFIG.color.g},${CONFIG.color.b},${CONFIG.color.alpha})`;
     innerStrokeStyle = `rgba(${CONFIG.innerLine.color.r},${CONFIG.innerLine.color.g},${CONFIG.innerLine.color.b},${CONFIG.innerLine.color.alpha})`;
-    shadowColor = `rgba(${CONFIG.color.r},0,0,1)`;
     
     // Create void gradient once
     const r0 = CONFIG.void.radius;
@@ -77,7 +75,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
   let fadeStyle;
 
   function resize() {
-      dpr = window.devicePixelRatio || 1;
+      // dpr = window.devicePixelRatio || 1;
+      dpr = 1;
+
       width = 336;
       height = 280;
 
@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
           if (CONFIG.innerLine.enabled && CONFIG.innerLine.sizeRatio > 0) {
               ctx.lineWidth = CONFIG.particle.size * CONFIG.innerLine.sizeRatio;
               ctx.strokeStyle = innerStrokeStyle;
-              ctx.shadowBlur = 0;
 
               ctx.beginPath();
               ctx.moveTo(px, py);
@@ -156,7 +155,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
               // Restore main settings
               ctx.lineWidth = CONFIG.particle.size;
               ctx.strokeStyle = mainStrokeStyle;
-              ctx.shadowBlur = CONFIG.color.glow;
           }
 
           if (
@@ -195,14 +193,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
       ctx.globalCompositeOperation = "lighter";
       ctx.lineWidth = CONFIG.particle.size;
       ctx.strokeStyle = mainStrokeStyle;
-      ctx.shadowColor = shadowColor;
-      ctx.shadowBlur = CONFIG.color.glow;
 
       for (let i = 0; i < particles.length; i++) {
           particles[i].update();
       }
-
-      ctx.shadowBlur = 0;
 
       drawVoid();
 
